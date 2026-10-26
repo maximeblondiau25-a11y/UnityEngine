@@ -1,0 +1,11 @@
+plugins { id 'java'; id 'net.neoforged.moddev' version '2.0.78' }
+version = mod_version
+group = 'com.unityengine'
+base.archivesName = 'UnityEngine'
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+neoForge {
+    version = neo_version
+    runs { client { client() } }
+    mods { unityengine { sourceSet sourceSets.main } }
+}
+processResources { inputs.property 'v', mod_version; filesMatching('META-INF/neoforge.mods.toml') { expand v: mod_version } }
